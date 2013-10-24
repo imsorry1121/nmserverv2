@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dish.name %>
+</p>
+
+<p>
+  <b>Store:</b>
+  <%= @dish.store %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @dish.price %>
+</p>
+
+<p>
+  <b>Img:</b>
+  <% @path = "/dishs/img/"+@dish.id.to_s %>
+  <%= image_tag(@path, :size=> "50x50") %>
+</p>
+
+
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', dishes_path %>

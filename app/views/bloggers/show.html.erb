@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Title:</b>
+  <%= @blogger.title %>
+</p>
+<p>
+  <b>Name:</b>
+  <%= @blogger.name %>
+</p>
+
+<p>
+  <b>Img:</b>
+  <% @path = "/bloggers/img/"+@blogger.id.to_s%>
+  <%= image_tag @path, :size => "50x50" %>
+</p>
+
+<p>
+  <b>Intro:</b>
+  <%= @blogger.intro %>
+</p>
+
+
+<%= link_to 'Edit', edit_blogger_path(@blogger) %> |
+<%= link_to 'Back', bloggers_path %>

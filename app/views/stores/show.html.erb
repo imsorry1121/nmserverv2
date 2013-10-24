@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @store.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @store.location %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @store.phone %>
+</p>
+
+<p>
+  <b>Otime:</b>
+  <%= @store.otime %>
+</p>
+
+<p>
+  <b>Ctime:</b>
+  <%= @store.ctime %>
+</p>
+
+<p>
+  <b>Img1:</b>
+  <% path1 = "/store/img/"+@store.id.to_s+"/1"%>
+  <%= image_tag path1, "size"=> "50x50" %>
+</p>
+
+<p>
+  <b>Img2:</b>
+  <% path2 = "/store/img/"+@store.id.to_s+"/2"%>
+  <%= image_tag path2, "size"=> "50x50" %>
+</p>
+
+<p>
+  <b>Img3:</b>
+  <% path3 = "/stores/img/"+@store.id.to_s+"/3"%>
+  <%= image_tag path3, "size"=> "50x50" %>
+</p>
+
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

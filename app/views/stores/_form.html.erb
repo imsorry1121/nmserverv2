@@ -1,0 +1,49 @@
+<%= form_for(@store) do |f| %>
+  <% if @store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+      <% @store.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :otime %><br />
+    <%= f.select :otime,['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '不一定'] %>
+  </div>
+  <div class="field">
+    <%= f.label :ctime %><br />
+    <%= f.select :ctime, ['7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00', '不一定', '賣完就關'] %>
+  </div>
+  <div class="field">
+    <%= f.label :img1 %><br />
+    <%= f.file_field :img1 %>
+  </div>
+  <div class="field">
+    <%= f.label :img2 %><br />
+    <%= f.file_field :img2 %>
+  </div>
+  <div class="field">
+    <%= f.label :img3 %><br />
+    <%= f.file_field :img3 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

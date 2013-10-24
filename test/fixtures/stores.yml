@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  location: MyString
+  phone: MyString
+  otime: 2013-10-23
+  ctime: 2013-10-23
+  img1: 
+  img2: 
+  img3: 
+
+two:
+  name: MyString
+  location: MyString
+  phone: MyString
+  otime: 2013-10-23
+  ctime: 2013-10-23
+  img1: 
+  img2: 
+  img3: 
