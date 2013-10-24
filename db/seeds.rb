@@ -26,7 +26,7 @@ Blogger.delete_all
 File.open("public/bloggers/list.txt").each do |line|
 	puts line
 	arr = line.split("\t")
-	Blogger.create(:img => open("public/bloggers/#{arr[0]}").read, :name => arr[1], :title => arr[2], :intro => arr[3])
+	Blogger.create(:img => File.open("public/bloggers/#{arr[0]}", 'rb').read, :name => arr[1], :title => arr[2], :intro => arr[3])
 end
 
 #comment
