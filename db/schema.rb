@@ -23,23 +23,20 @@ ActiveRecord::Schema.define(:version => 20131024015437) do
   end
 
   create_table "comments", :force => true do |t|
+    t.string   "content",    :null => false
     t.integer  "blogger_id"
     t.integer  "dish_id"
-    t.string   "b_name",     :null => false
-    t.string   "d_name",     :null => false
-    t.string   "content",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "dishes", :force => true do |t|
     t.string   "name",       :null => false
-    t.integer  "store_id"
-    t.string   "store",      :null => false
     t.integer  "price",      :null => false
     t.binary   "img",        :null => false
     t.string   "including"
     t.string   "intro"
+    t.integer  "store_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,11 +1,9 @@
 class CreateComments < ActiveRecord::Migration
   def change
     create_table :comments do |t|
-      t.references :blogger
-      t.references :dish
-      t.string :b_name, :null => false
-      t.string :d_name, :null => false
       t.string :content, :null => false
+      t.integer :blogger_id
+      t.integer :dish_id
 
       t.timestamps
     end

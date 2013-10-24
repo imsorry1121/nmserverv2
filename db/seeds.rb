@@ -28,6 +28,7 @@ File.open("public/bloggers/list.txt").each do |line|
 	arr = line.split("\t")
 	Blogger.create(:img => open("public/bloggers/#{arr[0]}").read, :name => arr[1], :title => arr[2], :intro => arr[3])
 end
+
 #comment
 
 #store

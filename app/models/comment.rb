@@ -1,3 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :b_id, :d_id, :b_name, :content, :d_name
+  attr_accessible :blogger_id, :dish_id, :content
+  belongs_to :blogger
+  belongs_to :dish
 end

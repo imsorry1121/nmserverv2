@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Store</th>
     <th>Price</th>
     <th>Img</th>
     <th></th>
@@ -14,7 +13,6 @@
 <% @dishes.each do |dish| %>
   <tr>
     <td><%= dish.name %></td>
-    <td><%= dish.store %></td>
     <td><%= dish.price %></td>
     <td><% @path = "/dishs/img/"+dish.id.to_s %>
   <%= image_tag(@path, :size=> "50x50") %></td>

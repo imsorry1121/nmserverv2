@@ -1,3 +1,4 @@
 class Dish < ActiveRecord::Base
-  attr_accessible :s_id, :img, :name, :price, :store, :including, :intro
+  attr_accessible :store_id, :img, :name, :price, :including, :intro
+  belongs_to :store
 end
