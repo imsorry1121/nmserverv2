@@ -17,13 +17,27 @@ class BloggersController < ApplicationController
   # GET /bloggers/1.json
   def show
     @blogger = Blogger.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @blogger }
     end
   end
-
+  def getJsonWTImg
+    @bloggers = Blogger.all
+    @bloggerArray = Array.new
+    @bloggers.each do |item|
+      valuejson = item.to_json
+      value = JSON.parse(valuejson)
+      value.delete("img")
+      item2 = value.to_json
+      item = item2
+      puts item
+      @bloggerArray.push(item)
+    end
+    respond_to do |format|
+      format.json { render json: @bloggerArray }
+    end
+  end
   # GET /bloggers/new
   # GET /bloggers/new.json
   def new
@@ -33,7 +47,7 @@ class BloggersController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @blogger }
     end
-  end
+  end      
 
   # GET /bloggers/1/edit
   def edit
