@@ -24,18 +24,14 @@ class BloggersController < ApplicationController
   end
   def getJsonWTImg
     @bloggers = Blogger.all
-    @bloggerArray = Array.new
+    stringArray = Array.new
     @bloggers.each do |item|
-      valuejson = item.to_json
-      value = JSON.parse(valuejson)
-      value.delete("img")
-      item2 = value.to_json
-      item = item2
-      puts item
-      @bloggerArray.push(item)
+      item2 = JSON.parse(item.to_json)
+      item2.delete("img");
+      stringArray.push(item2)
     end
     respond_to do |format|
-      format.json { render json: @bloggerArray }
+      format.json { render json: stringArray}
     end
   end
   # GET /bloggers/new

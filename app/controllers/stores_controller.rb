@@ -39,7 +39,20 @@ class StoresController < ApplicationController
   def edit
     @store = Store.find(params[:id])
   end
-
+  def getJsonWTImg
+    @stores = Store.all
+    hashArray = Array.new
+    @stores.each do |item|
+      itemHash = JSON.parse(item)
+      itemHash.delete("img1")
+      itemHash.delete("img2")
+      itemHash.delete("img3")
+      hashArray.push(itemHash)
+    end
+    respond_to do |format|
+      format.json { render json: @hashArray }
+    end
+  end
   # POST /stores
   # POST /stores.json
   def create
