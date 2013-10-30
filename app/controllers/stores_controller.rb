@@ -30,11 +30,13 @@ class StoresController < ApplicationController
       format.json { render json: @store }
     end
   end
+
   def showimg
-    imgn = "img" + params[:number].to_s
-    imgbi = Store.find(params[:id])[imgn]
-    send_data imgbi, "type"=>"image/jpeg", "disposition"=>"inline"
+    imgbi = Store.find(params[:id])["img#{params[:number]}"]
+    send_data imgbi, :type=>"image/jpeg", :disposition=>'inline'
   end
+
+  
   # GET /stores/1/edit
   def edit
     @store = Store.find(params[:id])
