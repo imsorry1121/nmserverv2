@@ -7,8 +7,8 @@ Nmserverv2::Application.routes.draw do
 
   resources :dishes
 
-  get "/disha/img/:id" => "dishes#showimg"
-  get "storea/img/:id/:number" => "stores#showimg"
+  get "/dishes/img/:id" => "dishes#showimg"
+  get "/stores/img/:number/:id" => "stores#showimg"
   get "/bloggers/img/:id" => "bloggers#showimg"
   get "storeswithoutimg" =>"stores#getJsonWTImg"
   get "bloggerswithoutimg" =>"bloggers#getJsonWTImg"

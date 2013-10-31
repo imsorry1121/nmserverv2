@@ -14,7 +14,7 @@
   <tr>
     <td><%= dish.name %></td>
     <td><%= dish.price %></td>
-    <td><% @path = "/dishs/img/"+dish.id.to_s %>
+    <td><% @path = "/dishes/img/"+dish.id.to_s %>
   <%= image_tag(@path, :size=> "50x50") %></td>
     <td><%= link_to 'Show', dish %></td>
     <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
