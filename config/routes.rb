@@ -10,9 +10,9 @@ Nmserverv2::Application.routes.draw do
   get "/dishes/img/:id" => "dishes#showimg"
   get "/stores/img/:number/:id" => "stores#showimg"
   get "/bloggers/img/:id" => "bloggers#showimg"
-  get "storeswithoutimg" =>"stores#getJsonWTImg"
-  get "bloggerswithoutimg" =>"bloggers#getJsonWTImg"
-  get "disheswithoutimg" =>"dishes#getJsonWTImg"
+  get "/storeswithoutimg.:format" =>"stores#getJsonWTImg"
+  get "/bloggerswithoutimg.:format" =>"bloggers#getJsonWTImg"
+  get "/disheswithoutimg.:format" =>"dishes#getJsonWTImg"
   resources :stores
 
 

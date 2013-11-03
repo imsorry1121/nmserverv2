@@ -45,7 +45,7 @@ class StoresController < ApplicationController
     @stores = Store.all
     hashArray = Array.new
     @stores.each do |item|
-      itemHash = JSON.parse(item)
+      itemHash = JSON.parse(item.to_json)
       itemHash.delete("img1")
       itemHash.delete("img2")
       itemHash.delete("img3")

@@ -7,7 +7,7 @@ class CreateDishes < ActiveRecord::Migration
       t.string :including
       t.string :intro
       t.integer :store_id
-
+      
       t.timestamps
     end
   end

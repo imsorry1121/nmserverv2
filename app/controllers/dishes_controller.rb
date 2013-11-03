@@ -57,7 +57,19 @@ class DishesController < ApplicationController
       end
     end
   end
-
+  def getJsonWTImg
+    @dishes = Dish.all
+    stringArray = Array.new
+    @dishes.each do |item|
+      item2 = JSON.parse(item.to_json)
+      item2.delete("img")
+      item2["store_name"] = item.store.name
+      stringArray.push(item2)
+    end
+    respond_to do |format|
+      format.json { render json: stringArray}
+    end
+  end
   # PUT /dishes/1
   # PUT /dishes/1.json
   def update
