@@ -52,7 +52,7 @@ class StoresController < ApplicationController
       hashArray.push(itemHash)
     end
     respond_to do |format|
-      format.json { render json: @hashArray }
+      format.json { render json: hashArray }
     end
   end
   # POST /stores
