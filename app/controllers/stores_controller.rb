@@ -9,14 +9,28 @@ class StoresController < ApplicationController
       format.json { render json: @stores }
     end
   end
+
+  def admin
+    @stores = Store.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @stores }
+    end
+  end
   # GET /stores/1
   # GET /stores/1.json
   def show
     @store = Store.find(params[:id])
-
+    hash = JSON.parse(@store.to_json)
+    if params[:format] == 'json'
+      hash.delete("img1")
+      hash.delete("img2")
+      hash.delete("img3")
+    end
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @store }
+      format.json { render json: hash }
     end
   end
 
@@ -41,6 +55,7 @@ class StoresController < ApplicationController
   def edit
     @store = Store.find(params[:id])
   end
+
   def getJsonWTImg
     @stores = Store.all
     hashArray = Array.new
@@ -55,6 +70,7 @@ class StoresController < ApplicationController
       format.json { render json: hashArray }
     end
   end
+
   # POST /stores
   # POST /stores.json
   def create

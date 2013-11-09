@@ -2,13 +2,57 @@
 <html>
 <head>
   <title>Nmserverv2</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap-lightbox" %>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "colorfamily" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="homepage">
+		<div style="background-color:#4E4F4B; color:#fff; padding-bottom:20px">
+			<div id="home-banner" class="container">
+				<h1 class="headline">NING XIA YES!</h1>
+				<%= image_tag('main_photo.jpeg', width: '100%', class: "img-thumbnail") %>
+			</div>
+		</div>
+		<div id="navigation-wrapper">
+	    <div id="navigation" class="container" style="text-align:center;">
+	      <ul>
+	      	<li>
+	          <a href="/stories" class="btn btn-lg">Stories</a>
+	        </li>
+	        <li>
+	          <a href="/messages" class="btn btn-lg">News</a>
+	        </li>
+	        <li>
+	          <a href="/stores" class="btn btn-lg">Stores</a>
+	        </li>
+	        <li>
+	          <a href="/dishes" class="btn btn-lg">Dishes</a>
+	        </li>
+	        <li>
+	          <a href="/bloggers" class="btn btn-lg">Bloggers</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	  <div class="row" style="padding-top: 30px;">
+	  	<form class="form">
+			  <div class="col-md-3 col-md-offset-4">
+			    <input type="text" class="form-control input-lg" placeholder="search for...">
+			  </div>
+				<button type="submit" class="btn btn-lg">Submit</button>
+			</form>
+		</div>
+	  <div id="container" class="container">
+			<%= yield %>
+		</div>
+	</div>
+	<footer class="footer" style="text-align:center; margin:50px 0">
+		<p>imsorry1121@gmail.com
+		</p>
+  </footer>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,28 +1,17 @@
-<h1>Listing dishes</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Img</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<h1><a href="/dishes/admin">Listing dishes</a></h1>
+<ul class="list-inline">
 <% @dishes.each do |dish| %>
-  <tr>
-    <td><%= dish.name %></td>
-    <td><%= dish.price %></td>
-    <td><% @path = "/dishes/img/"+dish.id.to_s %>
-  <%= image_tag(@path, :size=> "50x50") %></td>
-    <td><%= link_to 'Show', dish %></td>
-    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-    <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <li data-toggle="lightbox" href="#demoLightbox_<%= dish.id %>" onclick="$('#demoLightbox_<%= dish.id %>').lightbox('show');">
+    <%= image_tag "/dishes/img/#{dish.id.to_s}", :size => "150x150" %>
+    <h2><%= dish.name[0..4] %>
+    <% if dish.name.size > 6 %>
+    ...
+    <% end %>
+    </h2>
+    <%= dish.price %> NTD
+  </li>
+  <%= render :partial => "partial/lightbox", :locals => {:type => 'dishes', :item => dish, :info => "#{dish.price}\n"} %>
 <% end %>
-</table>
+</ul>
 
 <br />
-
-<%= link_to 'New Dish', new_dish_path %>

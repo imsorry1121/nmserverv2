@@ -35,6 +35,16 @@
   <%= image_tag "/stores/img/2/#{@store.id.to_s}" %>
 </p>
 
+<p>
+  <b>FB URL:</b>
+  <%= @store.fb_url %>
+</p>
+
+<p>
+  <b>introduction:</b>
+  <%= @store.intro %>
+</p>
+
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

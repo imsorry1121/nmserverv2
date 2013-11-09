@@ -9,6 +9,16 @@ class BloggersController < ApplicationController
       format.json { render json: @bloggers }
     end
   end
+
+  def admin
+    @bloggers = Blogger.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @bloggers }
+    end
+  end
+      
   def showimg
     imgbi = Blogger.find(params[:id])[:img]
     send_data imgbi, :type=>"image/jpeg", :disposition=>'inline'

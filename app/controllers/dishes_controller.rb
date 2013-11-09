@@ -9,6 +9,16 @@ class DishesController < ApplicationController
       format.json { render json: @dishes }
     end
   end
+
+  def admin
+    @dishes = Dish.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @dishes }
+    end
+  end
+
   def showimg
     imgbi = Dish.find(params[:id])[:img]
     send_data imgbi, :type=>"image/jpeg", :disposition=>'inline'
@@ -57,6 +67,7 @@ class DishesController < ApplicationController
       end
     end
   end
+
   def getJsonWTImg
     @dishes = Dish.all
     stringArray = Array.new
@@ -68,6 +79,19 @@ class DishesController < ApplicationController
     end
     respond_to do |format|
       format.json { render json: stringArray}
+    end
+  end
+
+  def storeDishesWTImg
+    @dishes = Dish.where( :store_id => params[:id] )
+    hashArray = Array.new
+    @dishes.each do |item|
+      itemHash = JSON.parse(item.to_json)
+      itemHash.delete("img")
+      hashArray.push(itemHash)
+    end
+    respond_to do |format|
+      format.json { render json: hashArray }
     end
   end
   # PUT /dishes/1

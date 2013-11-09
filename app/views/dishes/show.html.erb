@@ -21,6 +21,15 @@
   <%= image_tag(@path) %>
 </p>
 
+<p>
+  <b>Including:</b>
+  <%= @dish.including %>
+</p>
+
+<p>
+  <b>Intro:</b>
+  <%= @dish.intro %>
+</p>
 
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
 <%= link_to 'Back', dishes_path %>

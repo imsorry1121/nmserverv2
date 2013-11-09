@@ -1,18 +1,27 @@
 Nmserverv2::Application.routes.draw do
-  resources :comments
 
-
-  resources :bloggers
-
-
-  resources :dishes
-
+  get "/storedisheswithoutimg/:id.:format" => "dishes#storeDishesWTImg"
+  get "/stories" => "stories#index"
+  get "/messages/img/:id" => "messages#showimg"
   get "/dishes/img/:id" => "dishes#showimg"
   get "/stores/img/:number/:id" => "stores#showimg"
   get "/bloggers/img/:id" => "bloggers#showimg"
   get "/storeswithoutimg.:format" =>"stores#getJsonWTImg"
   get "/bloggerswithoutimg.:format" =>"bloggers#getJsonWTImg"
   get "/disheswithoutimg.:format" =>"dishes#getJsonWTImg"
+  get "/messageswithoutimg.:format" =>"messages#getJsonWTImg"
+  get "/dishes/admin" => "dishes#admin"
+  get "/bloggers/admin" => "bloggers#admin"
+  get "/stores/admin" => "stores#admin"
+  
+  resources :messages
+
+  resources :comments
+
+  resources :bloggers
+
+  resources :dishes
+
   resources :stores
 
 
@@ -65,7 +74,7 @@ Nmserverv2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'bloggers#index'
+  root :to => 'stories#index'
 
   # See how all your routes lay out with "rake routes"
 

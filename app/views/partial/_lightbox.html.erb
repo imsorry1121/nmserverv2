@@ -1,0 +1,17 @@
+<div id="demoLightbox_<%= item.id %>" class="lightbox fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="lightbox-content" style="width: 571px; height: 379px;">
+      <div class="clipwrapper">
+        <div class="clip">
+          <% img_url = "/#{type}/img/#{item.id.to_s}" %>
+          <% if type == 'stores' then img_url = "/#{type}/img/2/#{item.id.to_s}" end %>
+          <%= image_tag "#{img_url}", :style => "height: 420px; margin-left: -100px; margin-top: -30px;" %>
+        </div>
+      </div>
+      <div class="lightbox-caption"></div>
+      <div class="lightbox-content-right">
+        <h2><%= item.name %></h2>
+        <p><%= info %></p>
+        <p><%= "##############################\n"*10 %></p>
+      </div>
+    </div>
+  </div>
