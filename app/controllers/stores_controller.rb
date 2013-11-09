@@ -9,6 +9,15 @@ class StoresController < ApplicationController
       format.json { render json: @stores }
     end
   end
+
+  def admin
+    @stores = Store.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @stores }
+    end
+  end
   # GET /stores/1
   # GET /stores/1.json
   def show

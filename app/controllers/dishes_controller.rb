@@ -9,6 +9,16 @@ class DishesController < ApplicationController
       format.json { render json: @dishes }
     end
   end
+
+  def admin
+    @dishes = Dish.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @dishes }
+    end
+  end
+
   def showimg
     imgbi = Dish.find(params[:id])[:img]
     send_data imgbi, :type=>"image/jpeg", :disposition=>'inline'

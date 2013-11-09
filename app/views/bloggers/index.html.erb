@@ -1,29 +1,13 @@
-<h1>Listing bloggers</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Name</th>
-    <th>Img</th>
-    <th>Intro</th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<h1><a href="/bloggers/admin">Listing bloggers</a></h1>
+<ul class="list-inline">
 <% @bloggers.each do |blogger| %>
-  <tr>
-    <td><%= blogger.title %></td>
-    <td><%= blogger.name %></td>
-    <td>  <% @path = "/bloggers/img/"+blogger.id.to_s%>
-  <%= image_tag @path, :size=>"50x50" %></td>
-    <td><%= blogger.intro %></td>
-    <td><%= link_to 'Show', blogger %></td>
-    <td><%= link_to 'Edit', edit_blogger_path(blogger) %></td>
-    <td><%= link_to 'Destroy', blogger, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <li data-toggle="lightbox" href="#demoLightbox_<%= blogger.id %>" onclick="$('#demoLightbox_<%= blogger.id %>').lightbox('show');">
+    <%= image_tag "/bloggers/img/#{blogger.id.to_s}", :size => "150x150" %>
+    <h2><%= blogger.title %></h2>
+    <%= blogger.name %>
+  </li>
+  <%= render :partial => "partial/lightbox", :locals => {:type => 'bloggers', :item => blogger, :info => "#{blogger.title}\n"} %>
 <% end %>
-</table>
+</ul>
 
 <br />
-
-<%= link_to 'New Blogger', new_blogger_path %>
