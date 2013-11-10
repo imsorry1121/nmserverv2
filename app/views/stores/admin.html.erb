@@ -8,7 +8,6 @@
     <th>Otime</th>
     <th>Ctime</th>
     <th>Img1</th>
-    <th>Img2</th>
     <th>intro</th>
     <th>fb_url</th>
     <th></th>
@@ -25,9 +24,6 @@
     <td><%= store.ctime %></td>
     <td><% @path1 = "/stores/img/1/"+store.id.to_s %>
   <%= image_tag(@path1, :size=> "50x50") %></td>
-    <td><% @path2 = "/stores/img/2/"+store.id.to_s %>
-  <%= image_tag(@path2, :size=> "50x50") %></td>
-    <td><%= store.intro %></td>
     <td><%= store.fb_url %></td>
     <td><%= link_to 'Show', store %></td>
     <td><%= link_to 'Edit', edit_store_path(store) %></td>

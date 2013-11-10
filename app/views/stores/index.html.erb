@@ -3,7 +3,7 @@
 <ul class="list-inline">
 <% @stores.each do |store| %>
   <li data-toggle="lightbox" href="#demoLightbox_<%= store.id %>" onclick="$('#demoLightbox_<%= store.id %>').lightbox('show');">
-    <%= image_tag "/stores/img/2/#{store.id.to_s}", :size => "150x150" %>
+    <%= image_tag "/stores/img/1/#{store.id.to_s}", :size => "150x150" %>
     <h2><%= store.name[0..4] %>
     <% if store.name.size > 6 %>
     ...

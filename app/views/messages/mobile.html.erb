@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nmserverv2</title>
+  <%= stylesheet_link_tag "bootstrap-lightbox" %>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "colorfamily" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="homepage">
+    <div style="background-color:#4E4F4B; color:#fff; padding-bottom:20px">
+      <div id="home-banner" class="container">
+        <h1 class="headline">NING XIA YES!</h1>
+        <%= image_tag('main_photo.jpeg', width: '100%', class: "img-thumbnail") %>
+      </div>
+    </div>
+    <div id="container" class="container" style="padding:30px;">
+      <% @messages.each do |message| %>
+      <div class="row" style="background-color:#F0F0D8;border-radius:5px;">
+      <table style="text-align:center;">
+        <tr>
+          <td><h1 class="headline"><%= message.title %></h1></td>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag("/messages/img/#{message.id.to_s}") %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= message.article %></td>
+        </tr>
+        <tr>
+          <td><%= message.author %></td>
+        </tr>
+      </table>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <footer class="footer" style="text-align:center; margin:50px 0">
+    <p>imsorry1121@gmail.com
+    </p>
+  </footer>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+</body>
+</html>

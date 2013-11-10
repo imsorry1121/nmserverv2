@@ -10,37 +10,34 @@
 
 
 #dish, comment and store
-Store.delete_all
+
 Dish.delete_all
-Comment.delete_all
-arr = ["good", "great", "novel", "awesome"]
-dishesArray = ["", "",""]
-stringArray = ["","","","","","",""]
-File.open("public/dishes2.txt").each do |line|
+File.open("public/dishes.txt").each do |line|
 	puts line
-	dishesArray = line.split("\t")
+	arr = line.split("\t")
 	Dish.create(
-		:img => File.open("public/dishes/d#{dishesArray[0]}.jpg", 'rb').read,
-		:name => dishesArray[2],
-		:store_id => dishesArray[1]
+		:id => arr[0],
+		:img => File.open("public/dishes/d#{arr[0]}.jpg", 'rb').read,
+		:name => arr[2],
+		:store_id => arr[1],
+		:price => arr[3]
 		)
 end
 
+Store.delete_all
 File.open("public/stores.txt").each do |line|
 	puts line
-	stringArray = line.split("\t")
+	arr = line.split("\t")
 	Store.create(
-		:img1 => File.open("public/stores/s#{stringArray[0]}.jpg", 'rb').read,
-		:name => stringArray[1],
-		:location => stringArray[2],
-		:otime => stringArray[3],
-		:ctime => stringArray[4],
-		:intro => stringArray[5],
-		:fb_url => stringArray[6]
+		:img1 => File.open("public/stores/s#{arr[0]}.jpg", 'rb').read,
+		:name => arr[1],
+		:location => arr[2],
+		:otime => arr[3],
+		:ctime => arr[4],
+		:intro => arr[5],
+		:fb_url => arr[6]
 		)
 end
-
-seed = Random.new(1122)
 
 #blogger
 Blogger.delete_all
@@ -54,22 +51,16 @@ File.open("public/bloggers/list.txt").each do |line|
 		:intro => arr[3]
 		)
 end
-# counter = 1
-# File.open("public/stores.txt").each do |line|
-# 	Store.create(
-# 		:name => "#{line}",
-#     :location => "#{line}_addr.",
-#     :otime => "18:00",
-#     :ctime => "2:00",
-#     :img1 => File.open("public/stores/#{counter}_1.jpg", 'rb').read,
-#     :img2 => File.open("public/stores/#{counter}_2.jpg", 'rb').read,
-#   )
-# 	Dish.create(
-# 	  :name => "#{line}",
-# 	  :price => seed.rand(1..100),
-# 	  :img => File.open("public/stores/#{counter}_3.jpg", 'rb').read,
-# 	  :store_id => counter
-# 	)
-# 	counter = counter + 1
-# end     
+
+Message.delete_all
+File.open("public/messages.txt").each do |line|
+	puts line
+	arr = line.split("\t")
+	Message.create(
+		:title => arr[1],
+		:img => File.open("public/messages/n#{arr[0]}.jpg", 'rb').read,
+		:article => arr[2],
+		:author => arr[3]
+		)
+end  
       

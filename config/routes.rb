@@ -1,6 +1,6 @@
 Nmserverv2::Application.routes.draw do
 
-
+  get "/messages/mobile" => "messages#mobile"
   get "/storedisheswithoutimg/:id.:format" => "dishes#storeDishesWTImg"
   get "/stories" => "stories#index"
   get "/messages/img/:id" => "messages#showimg"
