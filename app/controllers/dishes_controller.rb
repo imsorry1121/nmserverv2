@@ -69,16 +69,29 @@ class DishesController < ApplicationController
   end
 
   def getJsonWTImg
-    @dishes = Dish.all
-    stringArray = Array.new
+    @dishes = Dish.select("name, price, store_id").all
+    # stringArray = Array.new
     @dishes.each do |item|
-      item2 = JSON.parse(item.to_json)
-      item2.delete("img")
-      item2["store_name"] = item.store.name
-      stringArray.push(item2)
+      # item2 = JSON.parse(item.to_json)
+      # item2.delete("img")
+      # item2["store_name"] = item.store.name
+      # stringArray.push(item2)
+      item["store_name"] = item.store.name
     end
     respond_to do |format|
-      format.json { render json: stringArray}
+      # format.json { render json: stringArray}
+      format.json { render json: @dishes}
+    end
+  end
+
+  def getJsonWTImg2
+    @dishes = Dish.limit(5).offset(params[:id]).select("name, price, store_id")
+    @dishes.each do |item|
+      item["store_name"] = item.store.name
+    end
+    respond_to do |format|
+      # format.json { render json: stringArray}
+      format.json { render json: @dishes}
     end
   end
 

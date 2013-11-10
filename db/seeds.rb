@@ -10,6 +10,24 @@
 
 
 #dish, comment and store
+Store.delete_all
+File.open("public/stores.txt", 'r').each do |line|
+	puts line
+	arr = line.split("\t")
+	begin
+		Store.create(
+			:img1 => File.open("public/stores/s#{arr[0]}.jpg", 'rb').read,
+			:name => arr[1],
+			:location => arr[2],
+			:otime => arr[3],
+			:ctime => arr[4],
+			:intro => arr[5],
+			:fb_url => arr[6]
+			)
+	rescue
+		next
+	end
+end
 
 Dish.delete_all
 File.open("public/dishes.txt").each do |line|
@@ -28,24 +46,7 @@ File.open("public/dishes.txt").each do |line|
 	end
 end
 
-Store.delete_all
-File.open("public/stores.txt").each do |line|
-	puts line
-	arr = line.split("\t")
-	begin
-		Store.create(
-			:img1 => File.open("public/stores/s#{arr[0]}.jpg", 'rb').read,
-			:name => arr[1],
-			:location => arr[2],
-			:otime => arr[3],
-			:ctime => arr[4],
-			:intro => arr[5],
-			:fb_url => arr[6]
-			)
-	rescue
-		next
-	end
-end
+
 
 #blogger
 Blogger.delete_all

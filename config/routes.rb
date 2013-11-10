@@ -14,7 +14,8 @@ Nmserverv2::Application.routes.draw do
   get "/dishes/admin" => "dishes#admin"
   get "/bloggers/admin" => "bloggers#admin"
   get "/stores/admin" => "stores#admin"
-  
+    get "/disheswithoutimg/:id.:format" =>"dishes#getJsonWTImg2"
+      get "/storeswithoutimg/:id.:format" =>"stores#getJsonWTImg2"
   resources :messages
 
   resources :comments

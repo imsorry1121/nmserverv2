@@ -57,19 +57,20 @@ class StoresController < ApplicationController
   end
 
   def getJsonWTImg
-    @stores = Store.all
-    hashArray = Array.new
-    @stores.each do |item|
-      itemHash = JSON.parse(item.to_json)
-      itemHash.delete("img1")
-      itemHash.delete("img2")
-      itemHash.delete("img3")
-      hashArray.push(itemHash)
-    end
+    @stores = Store.select("id, name, fb_url, location, otime, ctime").all
     respond_to do |format|
-      format.json { render json: hashArray }
+      format.json { render json: @stores }
     end
   end
+
+    def getJsonWTImg2
+    @stores = Store.limit(5).offset(params[:id]).select("id, name, fb_url, location, otime, ctime")
+    respond_to do |format|
+      # format.json { render json: stringArray}
+      format.json { render json: @stores }
+    end
+  end
+
 
   # POST /stores
   # POST /stores.json
