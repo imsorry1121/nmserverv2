@@ -96,15 +96,15 @@ class DishesController < ApplicationController
   end
 
   def storeDishesWTImg
-    @dishes = Dish.where( :store_id => params[:id] )
-    hashArray = Array.new
-    @dishes.each do |item|
-      itemHash = JSON.parse(item.to_json)
-      itemHash.delete("img")
-      hashArray.push(itemHash)
-    end
+    @dishes = Dish.select("name, price, id, including, intro").where( :store_id => params[:id] )
+    # hashArray = Array.new
+    # @dishes.each do |item|
+    #   itemHash = JSON.parse(item.to_json)
+    #   itemHash.delete("img")
+    #   hashArray.push(itemHash)
+    # end
     respond_to do |format|
-      format.json { render json: hashArray }
+      format.json { render json: @dishes }
     end
   end
   # PUT /dishes/1

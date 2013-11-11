@@ -16,7 +16,9 @@
 
 .container {
   max-width: 960px; }
-
+#container_news img{
+  max-width: 200px;
+}
 .list-inline{
   padding-left:10px;
   list-style:none}
