@@ -72,7 +72,7 @@ File.open("public/messages.txt").each do |line|
 	begin
 		Message.create(
 			:title => arr[1],
-			:img => File.open("public/messages/n#{arr[0]}.png", 'rb').read,
+			:img => File.open("public/messages/n#{arr[0]}.jpg", 'rb').read,
 			:article => arr[2],
 			:author => arr[3]
 			)
