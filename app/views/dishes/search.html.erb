@@ -1,0 +1,17 @@
+<h1>Search result</h1>
+<ul class="list-inline">
+<% @dishes.each do |dish| %>
+  <li data-toggle="lightbox" href="#demoLightbox_<%= dish.id %>" onclick="$('#demoLightbox_<%= dish.id %>').lightbox('show');">
+    <%= image_tag "/dishes/img/#{dish.id.to_s}", :size => "150x150" %>
+    <h2><%= dish.name[0..4] %>
+    <% if dish.name.size > 6 %>
+    ...
+    <% end %>
+    </h2>
+    <%= dish.price %> NTD
+  </li>
+  <%= render :partial => "partial/lightbox", :locals => {:type => 'dishes', :item => dish, :info => "#{dish.price}\n"} %>
+<% end %>
+</ul>
+
+<br />
