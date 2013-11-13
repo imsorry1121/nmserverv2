@@ -1,6 +1,16 @@
 class DishesController < ApplicationController
+
+  def search
+    @dishes = Dish.where("name LIKE '%#{params["keyword"]}%'")
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @dishes }
+    end
+  end
+
   # GET /dishes
-  # GET /dishes.json
+  # GET /dishes.json  
   def index
     @dishes = Dish.all
 
