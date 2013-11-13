@@ -94,7 +94,16 @@ class DishesController < ApplicationController
       format.json { render json: @dishes}
     end
   end
-
+  def searchVariety
+    @dishes = Dish.limit(20).select("name, price, store_id").where("variety=#{params[:variery]}")
+    @dishes.each do |item|
+      item["store_name"] = item.store.name
+    end
+    respond_to do |format|
+      # format.json { render json: stringArray}
+      format.json { render json: @dishes}
+    end
+  end
   def storeDishesWTImg
     @dishes = Dish.select("name, price, id, including, intro").where( :store_id => params[:id] )
     # hashArray = Array.new
